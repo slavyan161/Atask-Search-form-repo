@@ -11,7 +11,7 @@ export function InputComponent({ onEnter, className, placeholder, type, ...rest 
             <input
                 {...rest}
                 placeholder={placeholder || "Enter username"}
-                className={className || "w-full border px-2 py-1 mb-2"}
+                className={className || "w-full border px-2 py-1 mb-2 rounded-lg"}
                 type={type || "text"}
                 onKeyDown={(e) => {
                     if (e.key === 'Enter') {

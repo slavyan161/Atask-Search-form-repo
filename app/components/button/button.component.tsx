@@ -18,7 +18,7 @@ export function ButtonComponent({
     label,
     onClick,
     isLoading = false,
-    className = 'bg-blue-500 text-white w-full py-1 flex justify-center items-center gap-2 disabled:opacity-50',
+    className = 'bg-blue-500 text-white w-full py-1 flex justify-center items-center gap-2 disabled:opacity-50 hover:bg-blue-600 transition-all duration-300',
     suffix = null,
     isUseLabelLoading = true,
     isSuffixWithLoading = false,

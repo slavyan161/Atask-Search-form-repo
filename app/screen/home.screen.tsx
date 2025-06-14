@@ -94,7 +94,7 @@ export function HomeScreen() {
   }, [users, selectedUser]);
 
   return (
-    <div className="flex p-4 gap-4 bg-gray-100 min-h-screen font-sans container">
+    <div className="flex p-4 gap-4 min-h-screen font-sans container mx-auto justify-center">
       <div className="bg-white p-4 shadow w-full max-w-md">
         <form onSubmit={handleSubmit(onSubmit)}>
           <InputComponent
