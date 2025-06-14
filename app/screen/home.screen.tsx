@@ -6,6 +6,7 @@ import { fetchUserRepos, searchUsers } from '~/api/github.api';
 import type { TGithubRepo, TGithubUser } from '~/types/github.types';
 import { InputComponent } from '~/components/input/input.component';
 import { CardComponent } from '~/components/card/card.component';
+import { CardSkeletonComponent } from '~/components/card/card-skeleton.component';
 
 type FormValues = {
   query: string;
@@ -91,7 +92,7 @@ export function HomeScreen() {
     }));
 
     return activeUsers;
-  }, [users, selectedUser]);
+  }, [users, selectedUser, repos]);
 
   return (
     <div className="flex p-4 gap-4 min-h-screen font-sans container mx-auto justify-center">
@@ -126,7 +127,9 @@ export function HomeScreen() {
                 <ButtonComponent
                   dataTestId='user-detail-button'
                   label={user.login}
-                  onClick={() => handleUserSelect(user)}
+                  onClick={() => {
+                    handleUserSelect(user)
+                  }}
                   isLoading={isItemLoading && user.isActive}
                   className="w-full border px-2 py-1 flex justify-between items-center bg-white hover:bg-gray-50"
                   suffix={
@@ -141,6 +144,7 @@ export function HomeScreen() {
                   suffixLoadingSpinnerColor='text-blue-500'
                 />
 
+
                 <AnimatePresence initial={false}>
                   {user.isActive && (
                     <motion.div
@@ -153,7 +157,9 @@ export function HomeScreen() {
                     >
                       <div className="mt-2">
                         {repos.map((repo: any) => (
-                          <CardComponent key={repo.id} keyId={repo.id} description={repo.description} title={repo.name} score={repo.stargazers_count} />
+                          !isItemLoading ? (
+                            <CardComponent key={repo.id} keyId={repo.id} description={repo.description} title={repo.name} score={repo.stargazers_count} />
+                          ) : <CardSkeletonComponent />
                         ))}
                       </div>
                     </motion.div>
