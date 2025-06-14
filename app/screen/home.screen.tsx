@@ -4,6 +4,8 @@ import { ButtonComponent } from '~/components/button/button.component';
 import { AnimatePresence, motion } from 'framer-motion';
 import { fetchUserRepos, searchUsers } from '~/api/github.api';
 import type { TGithubRepo, TGithubUser } from '~/types/github.types';
+import { InputComponent } from '~/components/input/input.component';
+import { CardComponent } from '~/components/card/card.component';
 
 type FormValues = {
   query: string;
@@ -95,20 +97,13 @@ export function HomeScreen() {
     <div className="flex p-4 gap-4 bg-gray-100 min-h-screen font-sans container">
       <div className="bg-white p-4 shadow w-full max-w-md">
         <form onSubmit={handleSubmit(onSubmit)}>
-          <input
+          <InputComponent
             {...register('query')}
-            placeholder="Enter username"
-            className="w-full border px-2 py-1 mb-2"
-
-            // Added onKeyDown to handle Enter key submission
-            // This case only when the form is like now that only one input field
-            onKeyDown={(e) => {
-              if (e.key === 'Enter') {
-                e.preventDefault();
-                handleSubmit(onSubmit)();
-              }
+            onEnter={() => {
+              handleSubmit(onSubmit)();
             }}
           />
+
           <ButtonComponent
             dataTestId='search-button'
             label="Search"
@@ -158,19 +153,7 @@ export function HomeScreen() {
                     >
                       <div className="mt-2">
                         {repos.map((repo: any) => (
-                          <div
-                            key={repo.id}
-                            className="bg-gray-100 p-2 rounded mb-2 shadow-sm  min-h-[80px]"
-                          >
-                            <div className="flex justify-between items-center">
-                              <h4 className="font-semibold">{repo.name}</h4>
-                              <span className="flex items-center gap-1">
-                                {repo.stargazers_count}
-                                <span>⭐</span>
-                              </span>
-                            </div>
-                            <p className="text-sm text-gray-600 pt-1">{repo.description}</p>
-                          </div>
+                          <CardComponent key={repo.id} keyId={repo.id} description={repo.description} title={repo.name} score={repo.stargazers_count} />
                         ))}
                       </div>
                     </motion.div>
