@@ -1,5 +1,5 @@
 // using condition for handler jest Environment Variable
-const BASE_URL = process.env.VITE_GITHUB_API || 'https://api.github.com';
+const BASE_URL = 'https://api.github.com';
 
 export const searchUsers = async (query: string, limit = 6) => {
   const response = await fetch(`${BASE_URL}/search/users?q=${query}&per_page=${limit}`);
