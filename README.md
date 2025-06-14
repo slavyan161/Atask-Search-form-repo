@@ -16,6 +16,20 @@ This project demonstrates modern React development practices, including componen
 - 🧪 **Jest + React Testing Library** — Unit & component testing
 
 ---
+## 🧰 Requirements
+
+Before running this application, make sure you have the following installed:
+
+- **Node.js v20.19.2**
+
+> 📌 You can verify your installed Node.js version by running:
+>
+> ```bash
+> node -v
+> ```
+
+This specific version ensures compatibility with the dependencies and testing setup in this project.
+---
 
 ## 📁 Project Structure
 
