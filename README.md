@@ -21,6 +21,7 @@ This project demonstrates modern React development practices, including componen
 Before running this application, make sure you have the following installed:
 
 - **Node.js v20.19.2**
+- **Add to .env (VITE_GITHUB_API=https://api.github.com)**
 
 > 📌 You can verify your installed Node.js version by running:
 >
